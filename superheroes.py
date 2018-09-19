@@ -27,16 +27,18 @@ class Hero:
 
     def add_ability(self, ability):
         # Append ability to self.abilities
-        self.ability.append(ability)
+        self.abilities.append(ability)
 
     def attack(self):
+        power = 0
         # Call the attack method on every ability in our ability list
         for ability in self.abilities:
         # Add up and return the total of all attacks
+            power += ability.attack()
+        return power
 
 
-
-if __name__ == "__main":
+if __name__ == "__main__":
     hero = Hero("Wonder Woman")
     print(hero.attack())
     ability = Ability("Divine Speed", 300)
