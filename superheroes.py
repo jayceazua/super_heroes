@@ -13,9 +13,14 @@ class Ability:
 
 
 class Hero:
-    def __init__(self, name):
+    def __init__(self, name, health=100):
         self.abilities = list()
         self.name = name
+        self.armors = list()
+        self.start_health = health
+        self.health = health
+        self.deaths = 0
+        self.kills = 0
 
     def add_ability(self, ability):
         self.abilities.append(ability)
@@ -26,6 +31,38 @@ class Hero:
             power += ability.attack()
         return power
 
+    def defend(self):
+        """
+        This method should run the defend method on each piece of armor and calculate the total defense.
+
+        If the hero's health is 0, the hero is out of play and should return 0 defense points.
+        """
+        defense_points = 0
+
+        if self.health is 0:
+            return defense_points
+        else:
+            for armor in self.armors:
+                defense_points += armor.defense
+
+    def take_damage(self, damage_amt):
+        """
+        This method should subtract the damage amount from the
+        hero's health.
+
+        If the hero dies update number of deaths.
+        """
+        self.health -= damage_amt
+        if self.health is 0:
+            self.deaths += 1
+
+    def add_kill(self, num_kills):
+        """
+        This method should add the number of kills to self.kills
+        """
+        self.kills += num_kills
+
+
 class Weapon(Ability):
     def attack(self):
         """
@@ -34,6 +71,21 @@ class Weapon(Ability):
         Hint: The attack power is inherited.
         """
         return random.randint(0, self.attack_strength)
+
+
+class Armor:
+    def __init__(self, name, defense):
+        """Instantiate name and defense strength."""
+        self.name = name
+        self.defense = defense
+
+    def defend(self):
+        """
+        Return a random value between 0 and the
+        initialized defend strength.
+        """
+        return random.randint(0, self.defense)
+
 
 class Team:
     def __init__(self, team_name):
@@ -55,7 +107,6 @@ class Team:
                 self.heroes.remove(hero)
         return 0
 
-
     def find_hero(self, name):
         """
         Find and return hero from heroes list.
@@ -65,8 +116,6 @@ class Team:
             if hero.name == name:
                 return hero
         return 0
-
-
 
     def view_all_heroes(self):
         """Print out all heroes to the console."""
