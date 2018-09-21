@@ -122,6 +122,51 @@ class Team:
         for hero  in self.heroes:
             print(hero.name)
 
+    def attack(self, other_team):
+        """
+        This method should total our teams attack strength and call the defend() method on the rival team that is passed in.
+
+        It should call add_kill() on each hero with the number of kills made.
+        """
+        pass
+
+    def defend(self, damage_amt):
+        """
+        This method should calculate our team's total defense.
+        Any damage in excess of our team's total defense should be evenly distributed amongst all heroes with the deal_damage() method.
+
+        Return number of heroes killed in attack.
+        """
+        pass
+
+    def deal_damage(self, damage):
+        """
+        Divide the total damage amongst all heroes.
+        Return the number of heros that died in attack.
+        """
+        pass
+
+    def revive_heroes(self, health=100):
+        """
+        This method should reset all heroes health to their
+        original starting value.
+        """
+        pass
+
+    def stats(self):
+        """
+        This method should print the ratio of kills/deaths for each member of the team to the screen.
+
+        This data must be output to the terminal.
+        """
+        pass
+
+    def update_kills(self):
+        """
+        This method should update each hero when there is a team kill.
+        """
+        pass
+
 
 if __name__ == "__main__":
     hero_1 = Hero("Wonder Woman")
