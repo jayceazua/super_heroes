@@ -71,7 +71,7 @@ class Team:
     def view_all_heroes(self):
         """Print out all heroes to the console."""
         for hero  in self.heroes:
-            print(hero)
+            print(hero.name)
 
 
 if __name__ == "__main__":
