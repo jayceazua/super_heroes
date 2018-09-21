@@ -128,7 +128,12 @@ class Team:
 
         It should call add_kill() on each hero with the number of kills made.
         """
-        pass
+        total_attack = 0
+        for hero in self.heroes:
+            total_attack += hero.attack_strength
+            hero.add_kill(hero.kills)
+
+        other_team.defend(total_attack)
 
     def defend(self, damage_amt):
         """
@@ -137,14 +142,24 @@ class Team:
 
         Return number of heroes killed in attack.
         """
-        pass
+        total_defense = 0
+        for hero in self.heroes:
+            total_defense += hero.defend()
+        excess_damage = damage_amt - total_attack
+        return self.deal_damage(excess_damage)
 
     def deal_damage(self, damage):
         """
         Divide the total damage amongst all heroes.
         Return the number of heros that died in attack.
         """
-        pass
+        deaths = 0
+        damage_amt = damage // len(self.heroes)
+        for hero in self.heroes:
+            hero.take_damage(damage_amt)
+            if hero.health is 0:
+                deaths += 1
+        return deaths
 
     def revive_heroes(self, health=100):
         """
@@ -160,13 +175,17 @@ class Team:
 
         This data must be output to the terminal.
         """
-        pass
+        for hero in self.heroes:
+            ratio = (hero.kills // hero.deaths) * 100
+            print("{} kill/death ratio is {}%.".format(hero.name, ratio))
+
 
     def update_kills(self):
         """
         This method should update each hero when there is a team kill.
         """
-        pass
+        for hero in self.heroes:
+            print("What team kill bro...")
 
 
 if __name__ == "__main__":
