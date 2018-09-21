@@ -151,7 +151,8 @@ class Team:
         This method should reset all heroes health to their
         original starting value.
         """
-        pass
+        for hero in self.heroes:
+            hero.health = hero.start_health
 
     def stats(self):
         """
