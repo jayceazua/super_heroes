@@ -50,7 +50,10 @@ class Team:
         Remove hero from heroes list.
         If Hero isn't found return 0.
         """
-        pass
+        for hero in self.heroes:
+            if hero.name is name:
+                self.heroes.remove(hero)
+        return 0
 
 
     def find_hero(self, name):
@@ -60,19 +63,20 @@ class Team:
         """
         for hero in self.heroes:
             if hero.name == name:
-                return hero.name
-        return "{} is not found in the {} team.".format(name, self.name)
+                return hero
+        return 0
 
 
 
     def view_all_heroes(self):
         """Print out all heroes to the console."""
         for hero  in self.heroes:
-            print(hero.name)
+            print(hero)
 
 
 if __name__ == "__main__":
-    hero = Hero("Wonder Woman")
+    hero_1 = Hero("Wonder Woman")
+    hero = Hero("Batman")
     print(hero.attack())
     ability = Ability("Divine Speed", 300)
     hero.add_ability(ability)
@@ -80,7 +84,3 @@ if __name__ == "__main__":
     new_ability = Ability("Super Human Strength", 800)
     hero.add_ability(new_ability)
     print(hero.attack())
-    team = Team("Justice")
-    team.add_hero(hero)
-    team.view_all_heroes()
-    print(team.find_hero("Batman"))
