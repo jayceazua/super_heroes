@@ -40,10 +40,11 @@ class Hero:
         defense_points = 0
 
         if self.health is 0:
-            return defense_points
+            return int(defense_points)
         else:
             for armor in self.armors:
                 defense_points += armor.defense
+        return int(defense_points)
 
     def take_damage(self, damage_amt):
         """
@@ -61,6 +62,12 @@ class Hero:
         This method should add the number of kills to self.kills
         """
         self.kills += num_kills
+
+    def add_armor(self, armor):
+        """
+            This was not in the tutorial to add and append the armor.
+        """
+        self.armors.append(armor)
 
 
 class Weapon(Ability):
@@ -130,10 +137,10 @@ class Team:
         """
         total_attack = 0
         for hero in self.heroes:
-            total_attack += hero.attack_strength
+            total_attack += hero.attack()
             hero.add_kill(hero.kills)
-
         other_team.defend(total_attack)
+
 
     def defend(self, damage_amt):
         """
@@ -145,7 +152,7 @@ class Team:
         total_defense = 0
         for hero in self.heroes:
             total_defense += hero.defend()
-        excess_damage = damage_amt - total_attack
+        excess_damage = damage_amt - total_defense
         return self.deal_damage(excess_damage)
 
     def deal_damage(self, damage):
@@ -177,7 +184,7 @@ class Team:
         """
         for hero in self.heroes:
             ratio = (hero.kills // hero.deaths) * 100
-            print("{} kill/death ratio is {}%.".format(hero.name, ratio))
+            print(ratio)
 
 
     def update_kills(self):
