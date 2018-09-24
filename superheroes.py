@@ -138,8 +138,7 @@ class Team:
         total_attack = 0
         for hero in self.heroes:
             total_attack += hero.attack()
-            # call add_kill() on each hero with the number of kills made
-        other_team.defend(total_attack)
+        self.update_kills(other_team.defend(total_attack))
 
 
     def defend(self, damage_amt):
@@ -187,12 +186,12 @@ class Team:
             print(ratio)
 
 
-    def update_kills(self):
+    def update_kills(self, num_kills):
         """
         This method should update each hero when there is a team kill.
         """
         for hero in self.heroes:
-            print('Update how?')
+            hero.add_kill(num_kills)
 
 
 if __name__ == "__main__":
