@@ -1,7 +1,7 @@
 # Super Hero Battle
 ### *Computer Science 1.1*
 
-<img src="https://github.com/jayceazua/spaceman/blob/master/super_heroes_war.jpg">
+<img src="https://github.com/jayceazua/super_heroes/blob/master/super_heroes_war.jpg">
 
 ### Description
 ...
