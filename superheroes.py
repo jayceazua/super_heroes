@@ -201,6 +201,7 @@ class Arena:
         self.team_one = None
         self.team_two = None
         """
+
         self.team_one = None
         self.team_two = None
 
@@ -263,7 +264,7 @@ class Arena:
         power = random.randint(45, 700000)
         return Ability(name, power)
 
-    def create_hero(self, weapons=False, armors=False, health=False):
+    def create_hero(self):
         heroes = [
             "Athena",
             "Jodie Foster",
@@ -289,43 +290,91 @@ class Arena:
             "San Francisco",
             "Bananas"]
         name = heroes[random.randint(0, len(heroes) - 1)]
-        if health:
-            power = health
-        else:
-            power = random.randint(3, 700000)
+        power = random.randint(3, 700000)
         hero = Hero(name, power)
-        if weapons and armors:
-            for weapon in weapons:
-                hero.add_ability(weapon)
-            for armor in armors:
-                hero.add_armor(armor)
-        if armors and not weapons:
-            for armor in armors:
-                hero.add_armor(armor)
+        for _ in range(3):
+            hero.add_ability(self.create_ability())
+        hero.add_ability(self.create_weapon())
+        hero.add_armor(self.create_armor())
         return hero
 
-    def build_team_one(self, heroes=[]):
+    def build_team_one(self):
         """
         This method should allow a user to build team one.
         """
-        self.team_one = Team()
+        teams = [
+            "Orchids",
+            "Red",
+            "Blue",
+            "Cheese Steaks",
+            "Warriors",
+            "49ers",
+            "Marvel",
+            "DC",
+            "Rat Pack",
+            "The Little Red Riding Hoods",
+            "Team One",
+            "Generic Team",
+            "X-men",
+            "Team Two",
+            "Golden Champions",
+            "Vegan Protectors",
+            "The Cardinals",
+            "Winky Bears",
+            "Steelsmiths",
+            "Boilermakers",
+            "Nincompoops"]
+        name = teams[random.randint(0, len(teams) - 1)]
+        self.team_one = Team(name)
+        for _ in range(5):
+            self.team_one.add_hero(self.create_hero())
 
-    def build_team_two(self, heroes=[]):
+    def build_team_two(self):
         """
         This method should allow user to build team two.
         """
+        teams = [
+            "Orchids",
+            "Red",
+            "Blue",
+            "Cheese Steaks",
+            "Warriors",
+            "49ers",
+            "Marvel",
+            "DC",
+            "Rat Pack",
+            "The Little Red Riding Hoods",
+            "Team One",
+            "Generic Team",
+            "X-men",
+            "Team Two",
+            "Golden Champions",
+            "Vegan Protectors",
+            "The Cardinals",
+            "Winky Bears",
+            "Steelsmiths",
+            "Boilermakers",
+            "Nincompoops"]
+        name = teams[random.randint(0, len(teams) - 1)]
+        self.team_two = Team(name)
+        for _ in range(5):
+            self.team_two.add_hero(self.create_hero())
 
     def team_battle(self):
         """
         This method should continue to battle teams until
         one or both teams are dead.
         """
+        pass
 
     def show_stats(self):
         """
         This method should print out the battle statistics
         including each heroes kill/death ratio.
         """
-
+        pass
 
 if __name__ == "__main__":
+    Infinity_War = Arena()
+    Infinity_War.build_team_one()
+    Infinity_War.build_team_two()
