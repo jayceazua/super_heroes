@@ -164,6 +164,7 @@ class Team:
         for hero in self.heroes:
             hero.take_damage(damage_amt)
             if hero.health <= 0:
+                self.remove_hero(hero.name)
                 deaths += 1
         return deaths
 
@@ -197,11 +198,6 @@ class Team:
 
 class Arena:
     def __init__(self):
-        """
-        self.team_one = None
-        self.team_two = None
-        """
-
         self.team_one = None
         self.team_two = None
 
