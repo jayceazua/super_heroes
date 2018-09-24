@@ -39,7 +39,7 @@ class Hero:
         """
         defense_points = 0
 
-        if self.health is 0:
+        if self.health <= 0:
             return int(defense_points)
         else:
             for armor in self.armors:
@@ -54,7 +54,7 @@ class Hero:
         If the hero dies update number of deaths.
         """
         self.health -= damage_amt
-        if self.health is 0:
+        if self.health <= 0:
             self.deaths += 1
 
     def add_kill(self, num_kills):
@@ -138,7 +138,7 @@ class Team:
         total_attack = 0
         for hero in self.heroes:
             total_attack += hero.attack()
-            hero.add_kill(hero.kills)
+            # call add_kill() on each hero with the number of kills made
         other_team.defend(total_attack)
 
 
@@ -164,7 +164,7 @@ class Team:
         damage_amt = damage // len(self.heroes)
         for hero in self.heroes:
             hero.take_damage(damage_amt)
-            if hero.health is 0:
+            if hero.health <= 0:
                 deaths += 1
         return deaths
 
@@ -183,7 +183,7 @@ class Team:
         This data must be output to the terminal.
         """
         for hero in self.heroes:
-            ratio = (hero.kills // hero.deaths) * 100
+            ratio = (hero.kills / hero.deaths) * 100
             print(ratio)
 
 
@@ -192,7 +192,7 @@ class Team:
         This method should update each hero when there is a team kill.
         """
         for hero in self.heroes:
-            print("What team kill bro...")
+            print('Update how?')
 
 
 if __name__ == "__main__":

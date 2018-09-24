@@ -1,5 +1,3 @@
 {
-  "battle_test.py::test_team_attack_deaths": true,
-  "battle_test.py::test_team_attack_kills": true,
-  "battle_test.py::test_team_defend": true
+  "battle_test.py::test_team_attack_kills": true
 }
