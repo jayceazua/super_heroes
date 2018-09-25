@@ -361,7 +361,8 @@ class Arena:
         This method should continue to battle teams until
         one or both teams are dead.
         """
-        pass
+        while len(self.team_one.heroes)== 0 OR len(self.team_two.heroes) == 0:
+            
 
     def show_stats(self):
         """
