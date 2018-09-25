@@ -371,7 +371,6 @@ class Arena:
         pass
 
 if __name__ == "__main__":
-
     # Instantiate Game Arena
     arena = Arena()
 
