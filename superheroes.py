@@ -329,28 +329,10 @@ class Arena:
         """
         This method should allow user to build team two.
         """
-        teams = [
-            "Orchids",
-            "Red",
-            "Blue",
-            "Cheese Steaks",
-            "Warriors",
-            "49ers",
-            "Marvel",
-            "DC",
-            "Rat Pack",
-            "The Little Red Riding Hoods",
-            "Team One",
-            "Generic Team",
-            "X-men",
-            "Team Two",
-            "Golden Champions",
-            "Vegan Protectors",
-            "The Cardinals",
-            "Winky Bears",
-            "Steelsmiths",
-            "Boilermakers",
-            "Nincompoops"]
+        teams = ["Orchids", "Red", "Blue", "Cheese Steaks", "Warriors", "49ers",
+            "Marvel", "DC", "Rat Pack", "The Little Red Riding Hoods", "Team One",
+            "Generic Team", "X-men", "Team Two", "Golden Champions", "Vegan Protectors",
+            "The Cardinals", "Winky Bears", "Steelsmiths", "Boilermakers", "Nincompoops"]
         name = teams[random.randint(0, len(teams) - 1)]
         self.team_two = Team(name)
         for _ in range(5):
@@ -362,7 +344,7 @@ class Arena:
         one or both teams are dead.
         """
         while len(self.team_one.heroes)== 0 OR len(self.team_two.heroes) == 0:
-            
+
 
     def show_stats(self):
         """
