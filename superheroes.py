@@ -183,8 +183,11 @@ class Team:
         This data must be output to the terminal.
         """
         for hero in self.heroes:
-            ratio = (hero.kills / hero.deaths) * 100
-            print(ratio)
+            if hero.deaths == 0:
+                ratio = hero.kills
+            else:
+                ratio = (hero.kills / hero.deaths) * 100
+            print(hero.name + "'s kill/death radio:", ratio)
 
 
     def update_kills(self, num_kills):
@@ -355,7 +358,9 @@ class Arena:
         This method should print out the battle statistics
         including each heroes kill/death ratio.
         """
-        pass
+        print('Battle Ended: ')
+        self.team_one.stats()
+        self.team_two.stats()
 
 if __name__ == "__main__":
     # Instantiate Game Arena
@@ -374,7 +379,6 @@ if __name__ == "__main__":
         #Check for Player Input
         if play_again.lower() == "n":
             game_is_running = False
-
         else:
             #Revive heroes to play again
             arena.team_one.revive_heroes()
