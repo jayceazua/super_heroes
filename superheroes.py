@@ -343,8 +343,12 @@ class Arena:
         This method should continue to battle teams until
         one or both teams are dead.
         """
-        while len(self.team_one.heroes)== 0 OR len(self.team_two.heroes) == 0:
-
+        while len(self.team_one.heroes) != 0 and len(self.team_two.heroes) != 0:
+            self.team_one.attack(self.team_two)
+            self.team_two.attack(self.team_one)
+            # Team 2 fight
+        winner = self.team_one.name if len(self.team_two.heroes) == 0 else self.team_two.name
+        print(winner, "won!")
 
     def show_stats(self):
         """
@@ -356,7 +360,7 @@ class Arena:
 if __name__ == "__main__":
     # Instantiate Game Arena
     arena = Arena()
-
+    game_is_running = True
     #Build Teams
     arena.build_team_one()
     arena.build_team_two()
